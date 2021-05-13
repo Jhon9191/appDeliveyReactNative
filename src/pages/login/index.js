@@ -1,49 +1,63 @@
-import React, {useState} from 'react';
-import { 
+import React, { useState } from 'react';
+import {
     View,
     SafeAreaView,
     Text,
     TextInput,
     KeyboardAvoidingView,
     Platform,
-    Alert
+    Alert,
+    TouchableOpacity
 } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler'
 import styles from './style.js'
+import Icon from 'react-native-vector-icons/Ionicons'
 
-const Login = () => { 
+const Login = () => {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
     const handleLogin = () => {
-        if(email !== "" && senha !== ""){
-            Alert.alert("Carregando")
+        if (email !== "" && senha !== "") {
+            if(senha.length < 8){
+                Alert.alert("Sua senha precisa ter mais de 8 algarismos :(");
+                return;
+            }
+            Alert.alert("MACACO DO ZAP");
         }
     }
-    return(
+    return (
         <SafeAreaView style={styles.container}>
+
             <KeyboardAvoidingView
-            style={styles.container}
-            behavior={Platform.OS === 'android' ? 'padding' : 'padding'}
+                style={styles.container}
+                behavior={Platform.OS === 'android' ? 'padding' : 'padding'}
             >
+                <View style={styles.inputContainer}>
+                    <TextInput style={styles.input}
+                        placeholder="E-mail"
+                        placeholderTextColor="#918f8f"
+                        onChangeText={(value) => setEmail(value)}>
+                    </TextInput>
+                    <Icon name="eye-outline" size={25} color="#d5d5d5" />
+                </View>
 
-            <TextInput style={styles.input} 
-            placeholder="E-mail" 
-            placeholderTextColor="#918f8f"
-            onChangeText={(value)=>setEmail(value)}>  
-            </TextInput>
+                <View style={styles.inputContainer}>
+                    <TextInput style={styles.input}
+                        placeholder="Senha"
+                        placeholderTextColor="#918f8f"
+                        secureTextEntry={true}
+                        onChangeText={(value) => setSenha(value)}>
+                    </TextInput>
+                    <TouchableOpacity activeOpacity={0.4}>
+                        <Icon name="eye-outline" size={25} color="#918f8f" />
+                    </TouchableOpacity>
+                </View>
 
-            <TextInput style={styles.input} 
-            placeholder="Senha" 
-            placeholderTextColor="#918f8f"
-            secureTextEntry={true}
-            onChangeText={(value)=>setSenha(value)}>  
-            </TextInput>
-
-            <RectButton style={styles.button} onPress={()=>handleLogin()}>
-                <Text style={styles.whiteText}>Login</Text>
-            </RectButton>
+                <RectButton style={styles.button} onPress={() => handleLogin()}>
+                    <Text style={styles.whiteText}>Login</Text>
+                </RectButton>
 
             </KeyboardAvoidingView>
         </SafeAreaView>

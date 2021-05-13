@@ -11,17 +11,21 @@ const styles = StyleSheet.create({
         backgroundColor: "#f2f3fa",
     },
 
-    input:{
-        width: 300,
-        backgroundColor: "#d5d5d5",
+    inputContainer: {
         borderRadius: 7,
-        padding: 10,
-        marginBottom: 10,
-        textAlign: "center"
+        justifyContent: 'center', 
+        alignItems: 'center',
+        flexDirection: 'row', 
+        backgroundColor: "#d5d5d5", 
+        width: '90%',
+        marginBottom:15
+    },
+    input:{
+        width: "85%",
     },
 
     button:{
-        width: 300,
+        width: "90%",
         backgroundColor: "#323131",
         borderRadius: 7,
         padding: 15,
