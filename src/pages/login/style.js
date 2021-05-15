@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "#f2f3fa",
+        backgroundColor: "#F7B428",
     },
 
     inputContainer: {
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 
     button:{
         width: "90%",
-        backgroundColor: "#323131",
+        backgroundColor: "#D64622",
         borderRadius: 7,
         padding: 15,
         justifyContent: 'center',
@@ -39,8 +39,14 @@ const styles = StyleSheet.create({
     },
 
     whiteText:{
-        color: "#fff",
+        color: "#F7B428",
         fontWeight: 'bold'
+    },
+
+    newAccount:{
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: "#D64622"
     }
 
 });

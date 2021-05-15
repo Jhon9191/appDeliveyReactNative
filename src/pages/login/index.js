@@ -59,6 +59,10 @@ const Login = () => {
                     <Text style={styles.whiteText}>Login</Text>
                 </RectButton>
 
+                <TouchableOpacity onPress={() => {}}>
+                    <Text style={styles.newAccount}>Não tem conta?</Text>
+                </TouchableOpacity>
+
             </KeyboardAvoidingView>
         </SafeAreaView>
     );
