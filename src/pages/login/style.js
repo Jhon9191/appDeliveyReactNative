@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
 
+    
     newAccount:{
         fontSize: 16,
         fontWeight: 'bold',
