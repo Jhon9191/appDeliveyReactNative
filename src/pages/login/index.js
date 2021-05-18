@@ -17,6 +17,11 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [viewp,setViewp] = useState(true);
+
+    const viewPasssworks = () => {
+        setViewp(!viewp)
+    }
 
     const handleLogin = () => {
         if (email !== "" && senha !== "") {
@@ -47,10 +52,10 @@ const Login = () => {
                     <TextInput style={styles.input}
                         placeholder="Senha"
                         placeholderTextColor="#918f8f"
-                        secureTextEntry={true}
+                        secureTextEntry={viewp}
                         onChangeText={(value) => setSenha(value)}>
                     </TextInput>
-                    <TouchableOpacity activeOpacity={0.4}>
+                    <TouchableOpacity activeOpacity={0.4} onPress={()=>viewPasssworks()}>
                         <Icon name="eye-outline" size={25} color="#918f8f" />
                     </TouchableOpacity>
                 </View>
