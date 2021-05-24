@@ -10,7 +10,7 @@ import {
     TouchableOpacity
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import Input from '../../components/teste.js';
+import Input from '../../components/Input.js';
 import { RectButton } from 'react-native-gesture-handler'
 import styles from './styles.js'
 const register = () => {
@@ -18,7 +18,7 @@ const register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
-    const [viewp, setViewp] = useState(true);
+    const [viewp, setViewp] = useState(false);
 
     const navigate = useNavigation()
 
@@ -56,7 +56,7 @@ const register = () => {
                 <Input setValue={setSenha}
                     placeholder="Password"
                     secure={viewp}
-                    icon="eye-outline"
+                    icon={viewp == false ? "eye-outline" : "eye-off-outline"}
                     func={viewPasssworks} />
 
                 <RectButton style={styles.button} onPress={() => handleRegister()}>

@@ -12,7 +12,7 @@ import {
 import { RectButton } from 'react-native-gesture-handler'
 import styles from './style.js'
 import { useNavigation } from '@react-navigation/native'
-import Input from '../../components/teste.js';
+import Input from '../../components/Input.js';
 
 const Login = () => {
 
@@ -23,11 +23,8 @@ const Login = () => {
     const navigate = useNavigation()
 
     const viewPasssworks = () => {
+        console.log(viewp)
         setViewp(!viewp)
-    }
-
-    const alert = () => {
-        Alert.alert("oi")
     }
 
     const handleLogin = () => {
@@ -50,7 +47,7 @@ const Login = () => {
                 <Input setValue={setSenha}
                     placeholder="Password"
                     secure={viewp}
-                    icon="eye-outline"
+                    icon={viewp == false ? "eye-outline" : "eye-off-outline"}   
                     func={viewPasssworks} />
 
                 <RectButton style={styles.button} onPress={() => handleLogin()}>
