@@ -11,17 +11,15 @@ import {
 } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler'
 import styles from './style.js'
-import Icon from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native'
-import Input from '../../components/Imput/index.js';
-import Reacre from '../../components/teste.js';
+import Input from '../../components/teste.js';
 
 const Login = () => {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
-    const [viewp,setViewp] = useState(true);
- 
+    const [viewp, setViewp] = useState(true);
+
     const navigate = useNavigation()
 
     const viewPasssworks = () => {
@@ -34,11 +32,11 @@ const Login = () => {
 
     const handleLogin = () => {
         if (email !== "" && senha !== "") {
-            if(senha.length < 8){
+            if (senha.length < 8) {
                 Alert.alert("Sua senha precisa ter mais de 8 algarismos :(");
                 return;
             }
-            Alert.alert("MACACO DO ZAP");
+            Alert.alert("Logado com sucesso!");
         }
     }
     return (
@@ -48,19 +46,19 @@ const Login = () => {
                 style={styles.container}
                 behavior={Platform.OS === 'android' ? 'height' : 'padding'}>
 
-                <Reacre setValue={setEmail} placeholder="E-mail"/>
-                <Reacre setValue={setSenha}
-                 placeholder="Password" 
-                 secure={viewp} 
-                 icon="eye-outline" 
-                 func={viewPasssworks}/>
+                <Input setValue={setEmail} placeholder="E-mail" />
+                <Input setValue={setSenha}
+                    placeholder="Password"
+                    secure={viewp}
+                    icon="eye-outline"
+                    func={viewPasssworks} />
 
-                <RectButton style={styles.button} onPress={() => Alert.alert(email, `Senha ${senha}`)}>
+                <RectButton style={styles.button} onPress={() => handleLogin()}>
                     <Text style={styles.whiteText}>Login</Text>
                 </RectButton>
 
                 <TouchableOpacity onPress={() => navigate.navigate("Register")}>
-                    <Text style={styles.newAccount}>Não tem conta?</Text>
+                    <Text style={styles.newAccount}>Não possui uma conta?</Text>
                 </TouchableOpacity>
 
             </KeyboardAvoidingView>

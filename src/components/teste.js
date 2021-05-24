@@ -7,7 +7,7 @@ import {
     View
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'
-const Reacre = ({ children, func, setValue, icon, placeholder, secure }) => {
+const Input = ({ children, func, setValue, icon, placeholder, secure }) => {
     return (
         <View style={styles.container}>
             <TextInput style={{marginStart: 15, width: '90%'}}
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default Reacre;
+export default Input;
