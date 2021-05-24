@@ -12,12 +12,15 @@ import {
 import { RectButton } from 'react-native-gesture-handler'
 import styles from './style.js'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { useNavigation } from '@react-navigation/native'
 
 const Login = () => {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [viewp,setViewp] = useState(true);
+ 
+    const navigate = useNavigation()
 
     const viewPasssworks = () => {
         setViewp(!viewp)
@@ -64,7 +67,7 @@ const Login = () => {
                     <Text style={styles.whiteText}>Login</Text>
                 </RectButton>
 
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity onPress={() => navigate.navigate("Register")}>
                     <Text style={styles.newAccount}>Não tem conta?</Text>
                 </TouchableOpacity>
 
