@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 
     inputContainer: {
         borderRadius: 7,
-        justifyContent: 'center', 
+        justifyContent: 'space-around', 
         alignItems: 'center',
         flexDirection: 'row', 
         backgroundColor: "#d5d5d5", 

@@ -13,6 +13,8 @@ import { RectButton } from 'react-native-gesture-handler'
 import styles from './style.js'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native'
+import Input from '../../components/Imput/index.js';
+import Reacre from '../../components/teste.js';
 
 const Login = () => {
 
@@ -24,6 +26,10 @@ const Login = () => {
 
     const viewPasssworks = () => {
         setViewp(!viewp)
+    }
+
+    const alert = () => {
+        Alert.alert("oi")
     }
 
     const handleLogin = () => {
@@ -40,30 +46,16 @@ const Login = () => {
 
             <KeyboardAvoidingView
                 style={styles.container}
-                behavior={Platform.OS === 'android' ? 'height' : 'padding'}
-            >
-                <View style={styles.inputContainer}>
-                    <TextInput style={styles.input}
-                        placeholder="E-mail"
-                        placeholderTextColor="#918f8f"
-                        onChangeText={(value) => setEmail(value)}>
-                    </TextInput>
-                    <Icon name="eye-outline" size={25} color="#d5d5d5" />
-                </View>
+                behavior={Platform.OS === 'android' ? 'height' : 'padding'}>
 
-                <View style={styles.inputContainer}>
-                    <TextInput style={styles.input}
-                        placeholder="Senha"
-                        placeholderTextColor="#918f8f"
-                        secureTextEntry={viewp}
-                        onChangeText={(value) => setSenha(value)}>
-                    </TextInput>
-                    <TouchableOpacity activeOpacity={0.4} onPress={()=>viewPasssworks()}>
-                        <Icon name="eye-outline" size={25} color="#918f8f" />
-                    </TouchableOpacity>
-                </View>
+                <Reacre setValue={setEmail} placeholder="E-mail"/>
+                <Reacre setValue={setSenha}
+                 placeholder="Password" 
+                 secure={viewp} 
+                 icon="eye-outline" 
+                 func={viewPasssworks}/>
 
-                <RectButton style={styles.button} onPress={() => handleLogin()}>
+                <RectButton style={styles.button} onPress={() => Alert.alert(email, `Senha ${senha}`)}>
                     <Text style={styles.whiteText}>Login</Text>
                 </RectButton>
 
