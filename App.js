@@ -6,10 +6,14 @@ import Register from './src/pages/register';
 import 'react-native-gesture-handler';
 import Routes from './src/routes/index';
 import { NavigationContainer } from '@react-navigation/native'
+import AuthProvider from './src/context/auth';
+
 export default function App() {
   return (
     <NavigationContainer>
-      <Routes/>
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </NavigationContainer>
   );
 }

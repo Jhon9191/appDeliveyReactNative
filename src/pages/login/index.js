@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
     View,
     SafeAreaView,
@@ -13,6 +13,7 @@ import { RectButton } from 'react-native-gesture-handler'
 import styles from './style.js'
 import { useNavigation } from '@react-navigation/native'
 import Input from '../../components/Input.js';
+import {AuthContext} from '../../context/auth';
 
 const Login = () => {
 
@@ -21,6 +22,7 @@ const Login = () => {
     const [viewp, setViewp] = useState(true);
 
     const navigate = useNavigation()
+    const { user } = useContext(AuthContext);
 
     const viewPasssworks = () => {
         console.log(viewp)
