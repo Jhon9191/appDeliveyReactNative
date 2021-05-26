@@ -3,9 +3,9 @@ import React, { useState, createContext, Children } from 'react';
 export const AuthContext = createContext({});
 import Firebase from '../services/firebase';
 
-const AuthProvider = ( {children} ) => {
+const AuthProvider = ({ children }) => {
 
-    const [ user, setUser ] = useState(null);
+    const [user, setUser] = useState(null);
 
     const cadastrar = async (nome, email, senha) => {
         await Firebase.auth().createUserWithEmailAndPassword(email, senha)
@@ -18,7 +18,7 @@ const AuthProvider = ( {children} ) => {
                         let data = {
                             uid: uid,
                             nome: nome,
-                            email: value.user.email, 
+                            email: value.user.email,
                             avatar: null
                         };
                         setUser(data);
@@ -31,11 +31,33 @@ const AuthProvider = ( {children} ) => {
             })
     }
 
-    return(
-        <AuthContext.Provider value={{ 
+    const logar = async(email, password) => {
+        await Firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(async (value) => {
+                let uid = value.user.uid;
+                await Firebase.database().ref('users').child(uid).once('value')
+                    .then((snapshot) => {
+                        let data = {
+                            uid: uid,
+                            nome: snapshot.val().nome,
+                            email: value.user.email,
+                            avatar: snapshot.val().avatar
+                        };
+                        setUser(data);
+                    })
+            })
+            .catch((error) => {
+                console.log(error.code);
+            })
+    }
+
+
+    return (
+        <AuthContext.Provider value={{
             signed: !!user,
             user,
-            cadastrar
+            cadastrar,
+            logar
         }}>
             {children}
         </AuthContext.Provider>

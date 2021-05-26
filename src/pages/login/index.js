@@ -22,7 +22,7 @@ const Login = () => {
     const [viewp, setViewp] = useState(true);
 
     const navigate = useNavigation()
-    const { user } = useContext(AuthContext);
+    const { logar } = useContext(AuthContext);
 
     const viewPasssworks = () => {
         console.log(viewp)
@@ -35,6 +35,7 @@ const Login = () => {
                 Alert.alert("Sua senha precisa ter mais de 8 algarismos :(");
                 return;
             }
+            logar(email, senha)
             Alert.alert("Logado com sucesso!");
         }
     }
