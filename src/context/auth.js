@@ -5,7 +5,7 @@ import Firebase from '../services/firebase';
 
 const AuthProvider = ({ children }) => {
 
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({});
 
     const cadastrar = async (nome, email, senha) => {
         await Firebase.auth().createUserWithEmailAndPassword(email, senha)
