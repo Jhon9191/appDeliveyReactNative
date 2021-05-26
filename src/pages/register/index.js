@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import {
     View,
     SafeAreaView,
@@ -13,9 +13,12 @@ import { useNavigation } from '@react-navigation/native'
 import Input from '../../components/Input.js';
 import { RectButton } from 'react-native-gesture-handler'
 import styles from './styles.js'
+import { AuthContext } from '../../context/auth'
 const register = () => {
 
-    const [name, setName] = useState("");
+    const { cadastrar } = useContext(AuthContext)
+
+    const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [viewp, setViewp] = useState(false);
@@ -27,15 +30,12 @@ const register = () => {
     }
 
     const handleRegister = () => {
-        if (email !== "" && senha !== "" && senha !== "") {
+        if (email !== "" && senha !== "" && nome !== "") {
             if (senha.length < 8) {
                 console.log("Sua senha precisa ter mais de 8 algarismos :(");
                 return;
             }
-            console.log(`Cadastrado com suceso 
-            nome: ${name}
-            email: ${email}
-            senha: ${senha}`);
+            cadastrar(nome, email, senha)
         }
     }
 
@@ -51,7 +51,7 @@ const register = () => {
                 seus pedidos na {'\n'}
                 palma da mão!</Text>
 
-                <Input setValue={setName} placeholder="Name" />
+                <Input setValue={setNome} placeholder="Name" />
                 <Input setValue={setEmail} placeholder="E-mail" />
                 <Input setValue={setSenha}
                     placeholder="Password"
