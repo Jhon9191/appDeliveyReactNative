@@ -31,8 +31,8 @@ const AuthProvider = ({ children }) => {
             })
     }
 
-    const logar = async(email, password) => {
-        await Firebase.auth().signInWithEmailAndPassword(email, password)
+    const logar = async(email, senha) => {
+        await Firebase.auth().signInWithEmailAndPassword(email, senha)
             .then(async (value) => {
                 let uid = value.user.uid;
                 await Firebase.database().ref('users').child(uid).once('value')
