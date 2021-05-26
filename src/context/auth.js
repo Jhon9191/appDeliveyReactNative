@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 
 export const AuthContext = createContext({});
 import Firebase from '../services/firebase';
@@ -7,6 +7,16 @@ import Firebase from '../services/firebase';
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        async function loadStorage() {
+            const storageUser = await AsyncStorage.getItem('Auth_user');
+            if (storageUser) {
+                setUser(JSON.parse(storageUser));
+            }
+        }
+        loadStorage();
+    }, []);
 
     const cadastrar = async (nome, email, senha) => {
         await Firebase.auth().createUserWithEmailAndPassword(email, senha)

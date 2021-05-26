@@ -9,6 +9,9 @@ import { NavigationContainer } from '@react-navigation/native'
 import AuthProvider from './src/context/auth';
 
 export default function App() {
+
+  console.disableYellowBox = true;
+
   return (
     <NavigationContainer>
       <AuthProvider>
