@@ -1,11 +1,12 @@
-import React, { useState, createContext, Children } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState, createContext } from 'react';
 
 export const AuthContext = createContext({});
 import Firebase from '../services/firebase';
 
 const AuthProvider = ({ children }) => {
 
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
 
     const cadastrar = async (nome, email, senha) => {
         await Firebase.auth().createUserWithEmailAndPassword(email, senha)
@@ -44,6 +45,7 @@ const AuthProvider = ({ children }) => {
                             avatar: snapshot.val().avatar
                         };
                         setUser(data);
+                        storageUser(data);
                     })
             })
             .catch((error) => {
@@ -51,6 +53,9 @@ const AuthProvider = ({ children }) => {
             })
     }
 
+    const storageUser = async(data) => {
+        await AsyncStorage.setItem("Auth_user", JSON.stringify(data));
+    }
 
     return (
         <AuthContext.Provider value={{
