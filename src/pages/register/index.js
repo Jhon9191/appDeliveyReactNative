@@ -7,7 +7,9 @@ import {
     KeyboardAvoidingView,
     Platform,
     Alert,
-    TouchableOpacity
+    TouchableOpacity,
+    Image
+
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Input from '../../components/Input.js';
@@ -41,15 +43,20 @@ const register = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-
             <KeyboardAvoidingView
                 style={styles.container}
                 behavior={Platform.OS === 'android' ? 'height' : 'padding'}>
 
-                <Text style={styles.title}>Bem vindo ao {'\n'}
+                <Image
+                    style={{width: 150, height: 150, marginBottom: 15, tintColor: "#D64622"}}
+                    source={{
+                        uri: 'https://cdn.pixabay.com/photo/2018/03/31/13/58/hamburger-3278191_1280.png',
+                    }}
+                />
+                {/* <Text style={styles.title}>Bem vindo ao {'\n'}
                 appFood, para realizar {'\n'}
                 seus pedidos na {'\n'}
-                palma da mão!</Text>
+                palma da mão!</Text> */}
 
                 <Input setValue={setNome} placeholder="Name" />
                 <Input setValue={setEmail} placeholder="E-mail" />
