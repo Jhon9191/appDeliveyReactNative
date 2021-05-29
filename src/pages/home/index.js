@@ -12,34 +12,36 @@ import { AuthContext } from '../../context/auth'
 const Home = () => {
 
     const { user } = useContext(AuthContext)
-    
-    const [ list, setList ] = useState([
-        {id: 1, nome: "McDonalds1", end: "Rua Francisco",logo: "https://cdn.pixabay.com/photo/2015/10/20/21/05/mcdonald-998495_640.png"},
-        {id: 2, nome: "McDonalds2", end: "Rua Francisco",logo: "https://cdn.pixabay.com/photo/2015/10/20/21/05/mcdonald-998495_640.png"},
-        {id: 3, nome: "McDonalds3", end: "Rua Francisco",logo: "https://cdn.pixabay.com/photo/2015/10/20/21/05/mcdonald-998495_640.png"},
-        {id: 4, nome: "McDonalds4", end: "Rua Francisco",logo: "https://cdn.pixabay.com/photo/2015/10/20/21/05/mcdonald-998495_640.png"},
-        {id: 5, nome: "McDonalds5", end: "Rua Francisco",logo: "https://cdn.pixabay.com/photo/2015/10/20/21/05/mcdonald-998495_640.png"},
-    ])
-    
-    return (
-        <View style={styles.container}>
 
-            
+    const [list, setList] = useState([
+        { id: 1, nome: "McDonalds1", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+        { id: 2, nome: "McDonalds2", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+        { id: 3, nome: "McDonalds3", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+        { id: 4, nome: "McDonalds4", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+        { id: 5, nome: "McDonalds5", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+    ]);
+
+    return (
+        <View style={styles.background}>
+            <View style={styles.cardapido}>
                 <FlatList
                     data={list}
-                    keyExtractor={(item)=>String(item.id)}
-                    renderItem={({item}) => (
-                    <View style={{ 
-                        width: '60%',
-                    backgroundColor: "#121212", margin: 15}}>
-                        <Image 
-                        style={{ width: 130, height: 130}}
-                        source={{uri: item.logo}}/>
-                        <Text>{item.nome}</Text>
-                    </View>
+                    keyExtractor={item => String(item.id)}
+                    renderItem={({ item }) => (
+                        <View style={{
+                            width: "100%", justifyContent: 'center',
+                            alignItems: 'center'
+                        }}>
+                            <View style={styles.card}>
+                                <Image source={{uri: item.logo}} resizeMethod='scale' style={{height:"100%", width: 110}}/>
+                                <Text>oi</Text>
+                            </View>
+                        </View>
                     )}
                 />
-                </View>
+            </View>
+
+        </View>
     )
 }
 
