@@ -7,6 +7,7 @@ import {
     Image,
     FlatList,
     TextInput,
+    ScrollView
 } from "react-native"
 import styles from './styles';
 import { AuthContext } from '../../context/auth'
@@ -27,7 +28,17 @@ const Home = () => {
         { id: 8, nome: "8", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
         { id: 9, nome: "9", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
     ]);
+    const [ second, setSecond ] = useState([]);
 
+    useEffect(()=>{
+        setSecond([]);
+    },[search])
+
+    const searchDelivery = ( ) => {
+        setSecond(list.filter(item =>{
+            return item.nome.toLowerCase().includes(search.toLowerCase());
+        }));
+    }
 
     return ( 
         <SafeAreaView style={styles.background}>
@@ -35,16 +46,18 @@ const Home = () => {
             <View style={{ heigh: "20%", width: "100%", alignItems: 'center' }}>
                 <View style={styles.input}>
                     <TextInput onChangeText={(text)=>setSearch(text)} placeholder="Buscar delivery" style={{ marginStart: 15 }} />
-                    <TouchableOpacity >
+                    <TouchableOpacity onPress={()=>searchDelivery()}>
                         <Icon name="search-outline" size={25} color="#121212" style={{ marginEnd: 15 }} />
                     </TouchableOpacity>
                 </View>
             </View>
 
-                <FlatList
-                    data={list}
-                    keyExtractor={item => String(item.id)}
-                    renderItem={({ item }) => (
+                {search != "" ? ( 
+                     <FlatList
+                     showsVerticalScrollIndicator={false}
+                     data={second}
+                     keyExtractor={item => String(item.id)}
+                     renderItem={({ item }) => (
                         <View style={{
                             width: "100%", justifyContent: 'center',
                             alignItems: 'center'
@@ -64,7 +77,33 @@ const Home = () => {
                             </View>
                         </View>
                     )}
+                    />) : (
+                <FlatList
+                data={list}
+                showsVerticalScrollIndicator={false}
+                keyExtractor={item => String(item.id)}
+                renderItem={({ item }) => (
+                    <View style={{
+                        width: "100%", justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
+                            <View style={styles.card}>
+                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                    <Image source={{ uri: item.logo }}
+                                        resizeMethod='scale' style={{ marginStart: 5, marginEnd: 15, height: 80, width: 80, borderRadius: 50 }} />
+                                    <View>
+                                        <Text style={styles.label}>Nome: <Text style={styles.labelText}>{item.nome}</Text></Text>
+                                        <Text style={styles.label}>Endereço: <Text style={styles.labelText}>{item.end}</Text></Text>
+                                    </View>
+                                </View>
+                                <TouchableOpacity activeOpacity={0.6}>
+                                    <Icon name="caret-forward-outline" size={25} color="#E98000" />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    )}
                 />
+                )}
         </SafeAreaView>
     )
 }
