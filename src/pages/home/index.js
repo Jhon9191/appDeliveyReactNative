@@ -29,9 +29,21 @@ const Home = () => {
         { id: 9, nome: "9", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
     ]);
     const [ second, setSecond ] = useState([]);
+    const [ msg, setMsg ] = useState(false);
 
     useEffect(()=>{
-        setSecond([]);
+        if(search == ""){
+            setSecond([]);
+        }
+
+        
+    },[search])
+
+    useEffect(()=>{
+        searchDelivery();
+        if(search == ""){
+            setSecond([]);
+        }
     },[search])
 
     const searchDelivery = ( ) => {
@@ -52,6 +64,7 @@ const Home = () => {
                 </View>
             </View>
 
+                {msg == true && <Text>Oi</Text>}
                 {search != "" ? ( 
                      <FlatList
                      showsVerticalScrollIndicator={false}
@@ -77,7 +90,8 @@ const Home = () => {
                             </View>
                         </View>
                     )}
-                    />) : (
+                    />
+                    ) : (
                 <FlatList
                 data={list}
                 showsVerticalScrollIndicator={false}
