@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         margin:10,
         width: "100%",
+        marginBottom: 2
     },
 
     label:{
@@ -49,6 +50,11 @@ const styles = StyleSheet.create({
         color: "#121212",
         fontWeight: 'normal',
         fontSize: 14,
+    },
+
+    msg:{
+        fontSize: 16,
+        color: "#FFF"
     }
 
 });

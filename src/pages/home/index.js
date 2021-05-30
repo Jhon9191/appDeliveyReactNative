@@ -36,7 +36,15 @@ const Home = () => {
             setSecond([]);
         }
 
-        
+        const data = list.filter(item =>{
+            return item.nome.toLowerCase().includes(search.toLowerCase());
+        })
+        if(data.length > 0 ){
+            setMsg(false)
+        }else{
+            setMsg(true)
+        }
+
     },[search])
 
     useEffect(()=>{
@@ -64,7 +72,14 @@ const Home = () => {
                 </View>
             </View>
 
-                {msg == true && <Text>Oi</Text>}
+                {msg == true && (
+                    <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                        <Icon name="alert-circle-outline" size={25} color="#FFF"/>
+                        <Text style={styles.msg}>Nenhum resultado encontrado</Text>
+                    </View>
+                )
+                
+                }
                 {search != "" ? ( 
                      <FlatList
                      showsVerticalScrollIndicator={false}
@@ -118,6 +133,8 @@ const Home = () => {
                     )}
                 />
                 )}
+
+
         </SafeAreaView>
     )
 }
