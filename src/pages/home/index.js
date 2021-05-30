@@ -9,6 +9,7 @@ import {
 } from "react-native"
 import styles from './styles';
 import { AuthContext } from '../../context/auth'
+import Icon from 'react-native-vector-icons/Ionicons'
 const Home = () => {
 
     const { user } = useContext(AuthContext)
@@ -33,8 +34,17 @@ const Home = () => {
                             alignItems: 'center'
                         }}>
                             <View style={styles.card}>
-                                <Image source={{uri: item.logo}} resizeMethod='scale' style={{height:"100%", width: 110}}/>
-                                <Text>oi</Text>
+                                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                                    <Image source={{ uri: item.logo }}
+                                        resizeMethod='scale' style={{ marginStart: 5, marginEnd: 15, height: 80, width: 80, borderRadius: 50 }} />
+                                    <View>
+                                        <Text style={styles.label}>Nome: <Text style={styles.labelText}>{item.nome}</Text></Text>
+                                        <Text style={styles.label}>Endereço: <Text style={styles.labelText}>{item.end}</Text></Text>
+                                    </View>
+                                </View>
+                                <TouchableOpacity activeOpacity={0.6}>
+                                    <Icon name="caret-forward-outline" size={25} color="#E98000" />
+                                </TouchableOpacity>
                             </View>
                         </View>
                     )}

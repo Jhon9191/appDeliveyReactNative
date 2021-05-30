@@ -7,11 +7,11 @@ const styles = StyleSheet.create({
         width: '90%',
         height: 100,
         flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center',
+        justifyContent: 'space-around',
         backgroundColor: "#fff",
         margin: 4,
-        borderRadius: 15
+        borderRadius: 15,
     },
 
     background: {
@@ -28,6 +28,18 @@ const styles = StyleSheet.create({
         margin:10,
         width: "100%",
     },
+
+    label:{
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: "#E98000"
+    },
+
+    labelText:{
+        color: "#121212",
+        fontWeight: 'normal',
+        fontSize: 14,
+    }
 
 });
 
