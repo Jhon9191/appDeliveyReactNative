@@ -1,11 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
     Text,
     View,
     SafeAreaView,
     TouchableOpacity,
     Image,
-    FlatList
+    FlatList,
+    TextInput,
 } from "react-native"
 import styles from './styles';
 import { AuthContext } from '../../context/auth'
@@ -13,18 +14,33 @@ import Icon from 'react-native-vector-icons/Ionicons'
 const Home = () => {
 
     const { user } = useContext(AuthContext)
-
+    const [ search, setSearch ] = useState("");
     const [list, setList] = useState([
-        { id: 1, nome: "McDonalds1", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
-        { id: 2, nome: "McDonalds2", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
-        { id: 3, nome: "McDonalds3", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
-        { id: 4, nome: "McDonalds4", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
-        { id: 5, nome: "McDonalds5", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+        { id: 1, nome: "1", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+        { id: 2, nome: "2", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+        { id: 3, nome: "3", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+        { id: 4, nome: "4", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+        { id: 44, nome: "44", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+        { id: 5, nome: "5", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+        { id: 6, nome: "6", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+        { id: 7, nome: "7", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+        { id: 8, nome: "8", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+        { id: 9, nome: "9", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
     ]);
 
-    return (
-        <View style={styles.background}>
-            <View style={styles.cardapido}>
+
+    return ( 
+        <SafeAreaView style={styles.background}>
+
+            <View style={{ heigh: "20%", width: "100%", alignItems: 'center' }}>
+                <View style={styles.input}>
+                    <TextInput onChangeText={(text)=>setSearch(text)} placeholder="Buscar delivery" style={{ marginStart: 15 }} />
+                    <TouchableOpacity >
+                        <Icon name="search-outline" size={25} color="#121212" style={{ marginEnd: 15 }} />
+                    </TouchableOpacity>
+                </View>
+            </View>
+
                 <FlatList
                     data={list}
                     keyExtractor={item => String(item.id)}
@@ -34,7 +50,7 @@ const Home = () => {
                             alignItems: 'center'
                         }}>
                             <View style={styles.card}>
-                                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                     <Image source={{ uri: item.logo }}
                                         resizeMethod='scale' style={{ marginStart: 5, marginEnd: 15, height: 80, width: 80, borderRadius: 50 }} />
                                     <View>
@@ -49,9 +65,7 @@ const Home = () => {
                         </View>
                     )}
                 />
-            </View>
-
-        </View>
+        </SafeAreaView>
     )
 }
 

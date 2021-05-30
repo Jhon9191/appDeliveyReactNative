@@ -16,12 +16,22 @@ const styles = StyleSheet.create({
 
     background: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
         width: "100%",
         height: "100%",
         backgroundColor: "#E98000",    
     },
+
+    input:{
+        marginTop: 25,
+        borderRadius: 50,
+        backgroundColor: "#fff",
+        width: "90%",
+        marginBottom: 10,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexDirection: 'row'
+    },  
 
     cardapido: {
         borderRadius: 30,
