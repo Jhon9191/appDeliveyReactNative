@@ -36,8 +36,7 @@ const styles = StyleSheet.create({
     cardapido: {
         borderRadius: 30,
         margin:10,
-        width: "100%",
-        marginBottom: 2
+        width: "100%"
     },
 
     label:{
