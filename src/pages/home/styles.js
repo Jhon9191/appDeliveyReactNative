@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         marginTop: 25,
         borderRadius: 50,
         backgroundColor: "#fff",
-        width: "90%",
+        width: "95%",
         marginBottom: 10,
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -40,15 +40,15 @@ const styles = StyleSheet.create({
     },
 
     label:{
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: 'bold',
-        color: "#E98000"
+        color: "#121212"
     },
 
     labelText:{
         color: "#121212",
         fontWeight: 'normal',
-        fontSize: 14,
+        fontSize: 12,
     },
 
     msg:{
