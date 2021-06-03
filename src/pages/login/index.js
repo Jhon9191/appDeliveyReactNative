@@ -22,7 +22,7 @@ const Login = () => {
     const [senha, setSenha] = useState("");
     const [viewp, setViewp] = useState(true);
 
-    const navigate = useNavigation()
+    const navigate = useNavigation();
     const { logar } = useContext(AuthContext);
 
     const viewPasssworks = () => {
