@@ -10,10 +10,12 @@ import {
     ScrollView
 } from "react-native"
 import styles from './styles';
+import { useNavigation } from '@react-navigation/native'
 import { AuthContext } from '../../context/auth'
 import Icon from 'react-native-vector-icons/Ionicons'
 const Home = () => {
 
+    const navigate = useNavigation();
     const { user } = useContext(AuthContext)
     const [ search, setSearch ] = useState("");
     const [list, setList] = useState([
@@ -58,6 +60,10 @@ const Home = () => {
         setSecond(list.filter(item =>{
             return item.nome.toLowerCase().includes(search.toLowerCase());
         }));
+    }
+
+    const navigateToDelivery = ( item ) => {
+        navigate.navigate("Delivery", {item})
     }
 
     return ( 
@@ -125,7 +131,7 @@ const Home = () => {
                                         <Text style={styles.label}>Endereço: <Text style={styles.labelText}>{item.end}</Text></Text>
                                     </View>
                                 </View>
-                                <TouchableOpacity activeOpacity={0.6}>
+                                <TouchableOpacity activeOpacity={0.6} onPress={()=>navigateToDelivery(item)}>
                                     <Icon name="caret-forward-outline" size={25} color="#E98000" />
                                 </TouchableOpacity>
                             </View>
