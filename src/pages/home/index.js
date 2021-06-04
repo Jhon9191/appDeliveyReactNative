@@ -20,7 +20,7 @@ const Home = () => {
     const { user } = useContext(AuthContext)
     const [search, setSearch] = useState("");
     const [list, setList] = useState([
-        { id: 1, nome: "1", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
+        { id: 1, nome: "Twin", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
         { id: 2, nome: "2", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
         { id: 3, nome: "3", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
         { id: 4, nome: "4", end: "Rua Francisco", logo: "https://st.depositphotos.com/1000943/2157/i/600/depositphotos_21578567-stock-photo-atom.jpg" },
